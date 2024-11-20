@@ -4,6 +4,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			characters: [],
 			person: {},
 			misFavoritos: [],
+			planets: [],
+			planet: {},
 		},
 		actions: {
 			loadCharacters: async() => {
@@ -36,6 +38,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 					setStore({misFavoritos: aux})
 				} else {
 					setStore({misFavoritos: [...getStore().misFavoritos, item]})
+				}
+			},
+			loadPlanets: async() => {
+				try {
+					const response = await fetch('https://swapi.dev/api/planets')
+					const data = await response.json()
+					console.log(data.results)
+					setStore({planets: data.results})
+				} catch (error) {
+					console.log(error)
+					return false
+				}
+			},
+			loadInfoPlanets: async(id) => {
+				try {
+					const response = await fetch(`https://swapi.dev/api/planets/${id}`)
+					const data = await response.json()
+					console.log(data)
+					setStore({planet: data})
+				} catch (error) {
+					console.log(error)
+					return false
 				}
 			},
 		}

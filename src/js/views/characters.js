@@ -13,8 +13,8 @@ const Characters = () => {
 
     return (
         <div>
-            <h1>Characters</h1>
-            <div className="d-flex flex-row overflow-scroll">
+            <h1 className="d-flex justify-content-start">Characters</h1>
+            <div className="d-flex justify-content-start flex-row overflow-scroll">
                 {store.characters.map((item, id)=>(
                     <CardCharacters 
                         key={id}

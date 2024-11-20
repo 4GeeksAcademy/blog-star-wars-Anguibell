@@ -13,7 +13,7 @@ const Planets = () => {
 
     return (
         <div className="mt-5">
-            <h1>Planets</h1>
+            <h1 className="d-flex justify-content-start">Planets</h1>
             <div className="d-flex flex-row overflow-scroll">
                 {store.planets.map((item, id)=>(
                     <CardPlanets 
